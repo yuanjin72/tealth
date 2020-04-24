@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhong.dao.CheckItemDao">
+    <insert id="add" parameterType="com.zhong.pojo.CheckItem" >
+        INSERT into t_checkitem(code,name,sex,age,price,type,remark,attention)
+            VALUES
+        (#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
+    </insert>
+
+    <select id="selectByCodition" parameterType="String" resultType="com.zhong.pojo.CheckItem">
+        SELECT * from t_checkitem
+            <if test="value != null and value.length > 0">
+                WHERE code = #{value} or name = #{value}
+            </if>
+    </select>
+
+    <select id="findCountByCheckItemId" parameterType="int" resultType="long">
+        SELECT count(*) FROM  t_checkgroup_checkitem WHERE checkitem_id = #{checkitem_id}
+    </select>
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM t_checkitem WHERE id = #{id}
+    </delete>
+    <update id="edit" parameterType="com.zhong.pojo.CheckItem">
+        UPDATE t_checkitem
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+            <if test="remark != remark">
+                remark = #{remark},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+    <select id="findById" parameterType="int" resultType="com.zhong.pojo.CheckItem">
+        SELECT  * FROM t_checkitem WHERE id = #{id}
+    </select>
+</mapper>

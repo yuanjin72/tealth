@@ -22,7 +22,7 @@
     <!--指定暴露服务端口，默认20880-->
     <dubbo:protocol name="dubbo" port="20880"/>
     <!--指定服务中心地址-->
-    <dubbo:registry address="zookerper://47.102.148.209:2181"/>
+    <dubbo:registry address="zookeeper://47.102.148.209:2181"/>
     <!--扫描包-->
-    <dubbo:annotation package="com.zhong.service"/>
+    <dubbo:annotation package="com.zhong.service.impl"/>
 </beans>
