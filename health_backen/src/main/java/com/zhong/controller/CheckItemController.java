@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  *@Author yuanjin72@163.com
  *@Date 2020-04-22 18:06
@@ -68,7 +70,6 @@ public class CheckItemController {
             e.printStackTrace();
             return new Result(false, MessageConstant.QUERY_CHECKITEM_FAIL);
         }
-
     }
     //编辑检查项数据
     @RequestMapping("/edit")
@@ -81,5 +82,18 @@ public class CheckItemController {
         }
 
         return new Result(true,MessageConstant.EDIT_CHECKITEM_SUCCESS);
+    }
+
+    @RequestMapping("/findAll")
+    public Result findAll() {
+        try {
+            List<CheckItem> list = checkItemService.findAll();
+            return new Result(true,MessageConstant.EDIT_CHECKITEM_SUCCESS,list);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Result(false,MessageConstant.EDIT_CHECKITEM_FAIL);
+        }
+
+
     }
 }

@@ -19,4 +19,6 @@ public interface CheckItemDao {
     CheckItem findById(Integer id);
 
     void edit(CheckItem checkItem);
+
+    List<CheckItem> findAll();
 }

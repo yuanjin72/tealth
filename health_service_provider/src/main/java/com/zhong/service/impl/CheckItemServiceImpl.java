@@ -53,7 +53,6 @@ public class CheckItemServiceImpl implements CheckItemService {
        if(count > 0){
            //如果有关联不容许删除
            throw new RuntimeException();
-
        }
        checkItemDao.deleteById(id);
     }
@@ -63,9 +62,16 @@ public class CheckItemServiceImpl implements CheckItemService {
 
         return checkItemDao.findById(id);
     }
+
+    @Override
+    public List<CheckItem> findAll() {
+        return checkItemDao.findAll();
+    }
+
     //编辑检查项
     @Override
     public void edit(CheckItem checkItem) {
         checkItemDao.edit(checkItem);
+
     }
 }

@@ -4,6 +4,8 @@ import com.zhong.entity.PageResult;
 import com.zhong.entity.QueryPageBean;
 import com.zhong.pojo.CheckItem;
 
+import java.util.List;
+
 /**
  * @Author yuanjin
  * @Date 2020/4/2219:13
@@ -16,4 +18,6 @@ public interface CheckItemService {
 
    public void edit(CheckItem checkItem);
     public CheckItem findById(Integer id);
+
+    List<CheckItem> findAll();
 }
