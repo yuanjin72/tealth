@@ -61,4 +61,17 @@
     <delete id="deleteAssoication" parameterType="int">
         DELETE FROM t_checkgroup_checkitem WHERE checkgroup_id = #{id}
     </delete>
+    <!--查询所有检查组-->
+    <select id="findAll" resultType="com.zhong.pojo.CheckGroup">
+        select * from t_checkgroup;
+    </select>
+    <!--批量写入-->
+    <insert id="batchInsert" parameterType="java.util.List">
+           INSERT INTO t_checkgroup_checkitem(checkgroup_id,checkitem_id)
+            VALUES
+            <foreach collection="list" separator="," item="map">
+                (#{map.checkGroupId},#{map.checkItemId})
+            </foreach>
+
+    </insert>
 </mapper>
